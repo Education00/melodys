@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tải Dự Án Meloify Messenger AI (.ZIP)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- JSZip & FileSaver CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <style>
+    @keyframes pulseGlow {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+    .glow-effect {
+      box-shadow: 0 0 50px rgba(0, 132, 255, 0.25);
+    }
+  </style>
+</head>
+<body class="bg-[#0A0A0A] text-[#E4E6EB] min-h-screen flex items-center justify-center p-4 font-sans antialiased selection:bg-[#0084FF] selection:text-white">
+
+  <div class="max-w-xl w-full bg-[#18191A] border border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden glow-effect">
+    
+    <!-- Header Badge -->
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#0084FF] via-indigo-600 to-fuchsia-500 flex items-center justify-center text-xl shadow-lg">
+          📦
+        </div>
+        <div>
+          <h1 class="text-xl font-black text-white tracking-tight flex items-center gap-2">
+            Meloify Source Code
+            <span class="text-xs bg-[#0084FF]/20 text-[#0084FF] px-2.5 py-0.5 rounded-full border border-[#0084FF]/30 font-semibold">Vite + React</span>
+          </h1>
+          <p class="text-xs text-zinc-400">Đóng gói sẵn sàng chạy cho VS Code & Vite</p>
+        </div>
+      </div>
+      <span class="text-[11px] text-zinc-500 font-mono">v1.0.0</span>
+    </div>
+
+    <div class="bg-[#242526] rounded-2xl p-4 mb-6 border border-white/5 space-y-2 font-mono text-xs text-zinc-300">
+      <div class="flex items-center justify-between text-zinc-400 border-b border-white/10 pb-2 mb-2 font-sans text-xs font-bold">
+        <span>Cấu trúc file trong gói .ZIP</span>
+        <span class="text-[10px] text-emerald-400 font-normal">Đầy đủ Dependencies</span>
+      </div>
+      <div class="flex items-center gap-2 text-zinc-400">
+        <span>📁 meloify-messenger-ai/</span>
+      </div>
+      <div class="pl-4 space-y-1.5">
+        <div class="flex items-center gap-2">
+          <span>📁 src/</span>
+        </div>
+        <div class="pl-4 space-y-1">
+          <div class="flex items-center gap-2 text-sky-400 font-semibold">
+            <span>⚛️ App.jsx</span>
+            <span class="text-[10px] text-zinc-500 font-normal font-sans">(Meloify Messenger AI)</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-400">
+            <span>📄 main.jsx</span>
+          </div>
+          <div class="flex items-center gap-2 text-zinc-400">
+            <span>🎨 index.css</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 text-amber-300">
+          <span>⚙️ package.json</span>
+          <span class="text-[10px] text-zinc-500 font-normal font-sans">(Framer Motion, Lucide)</span>
+        </div>
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span>⚡ vite.config.js</span>
+        </div>
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span>🎨 tailwind.config.js & postcss.config.js</span>
+        </div>
+        <div class="flex items-center gap-2 text-zinc-400">
+          <span>🌐 index.html</span>
+        </div>
+        <div class="flex items-center gap-2 text-emerald-300">
+          <span>📖 README.md</span>
+          <span class="text-[10px] text-zinc-500 font-normal font-sans">(Hướng dẫn chạy)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#121314] rounded-2xl p-3.5 mb-6 border border-white/5 text-xs text-zinc-300 space-y-1.5">
+      <p class="font-bold text-white flex items-center gap-1.5 font-sans">
+        🚀 Sau khi tải về chỉ cần 2 lệnh:
+      </p>
+      <div class="bg-black/50 p-2 rounded-xl font-mono text-[11px] text-emerald-400 flex flex-col gap-1">
+        <span>1. npm install</span>
+        <span>2. npm run dev</span>
+      </div>
+    </div>
+
+    <button 
+      id="downloadBtn"
+      class="w-full py-4 rounded-2xl bg-gradient-to-r from-[#0084FF] to-indigo-600 hover:from-[#0070D8] hover:to-indigo-500 active:scale-[0.98] transition-all text-white font-bold text-sm shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+    >
+      <svg class="w-5 h-5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+      </svg>
+      <span id="btnLabel">Tải file .ZIP về máy ngay (1-Click)</span>
+    </button>
+
+    <!-- Download Progress / Toast Notification -->
+    <div id="toast" class="hidden mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs text-center font-medium animate-pulse">
+      Đang nén file và kích hoạt tải về trình duyệt...
+    </div>
+
+  </div>
+
+  <script>
+    // Package.json definition
+    const packageJsonContent = JSON.stringify({
+      "name": "meloify-messenger-ai",
+      "private": true,
+      "version": "1.0.0",
+      "type": "module",
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+      },
+      "dependencies": {
+        "framer-motion": "^11.0.8",
+        "lucide-react": "^0.354.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+      },
+      "devDependencies": {
+        "@vitejs/plugin-react": "^4.2.1",
+        "autoprefixer": "^10.4.18",
+        "postcss": "^8.4.35",
+        "tailwindcss": "^3.4.1",
+        "vite": "^5.1.4"
+      }
+    }, null, 2);
+
+    // Vite config definition
+    const viteConfigContent = `import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+});
+`;
+
+    // Tailwind config definition
+    const tailwindConfigContent = `/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+`;
+
+    // PostCSS config definition
+    const postcssConfigContent = `export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+`;
+
+    // Index HTML definition
+    const indexHtmlContent = `<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <title>Meloify Messenger AI</title>
+  </head>
+  <body class="bg-black text-[#E4E6EB] overflow-x-hidden selection:bg-[#0084FF] selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+`;
+
+    // Main JSX definition
+    const mainJsxContent = `import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+`;
+
+    // Index CSS definition
+    const indexCssContent = `@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #000000;
+  color: #E4E6EB;
+}
+
+/* Ẩn scrollbar xấu xí */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+`;
+
+    // Readme definition
+    const readmeContent = `# Meloify Messenger AI 🎙️💬
+
+Ứng dụng luyện nói tiếng Anh tương tác AI mô phỏng giao diện Meta Messenger Dark Mode mượt mà.
+
+## ✨ Tính năng chính:
+- **6 Persona AI độc bản:** Chloe (Mỏ hỗn), Liam (Bạn trai ngọt ngào), Leo (Tsundere), Mr. Raymond (Sếp công sở), Elena (Giám khảo IELTS), Zack (Gym Bro).
+- **Chuỗi luyện nói 🔥 kiểu TikTok:** Tự động kích hoạt khi chuỗi >= 3 ngày.
+- **Vuốt mép trái để Back (iOS Edge-Swipe):** Chuẩn cử chỉ iOS từ cạnh màn hình.
+- **Nhấn giữ tin nhắn (Long-press):** Thả cảm xúc reaction pill, trả lời trích dẫn, sao chép, phát âm Text-to-Speech và dịch highlight từ vựng bản xứ CEFR (A1-C1).
+- **Menu & Cài đặt 2 tầng:** Chuẩn giao diện Meta Messenger.
+
+## 🚀 Hướng dẫn cài đặt & khởi chạy:
+1. Mở terminal tại thư mục vừa giải nén:
+\`\`\`bash
+cd meloify-messenger-ai
+\`\`\`
+
+2. Cài đặt các gói thư viện:
+\`\`\`bash
+npm install
+\`\`\`
+
+3. Khởi chạy ứng dụng:
+\`\`\`bash
+npm run dev
+\`\`\`
+
+4. Mở trình duyệt tại đường dẫn hiển thị (thường là \`http://localhost:5173\`).
+`;
+
+    const appJsxContent = `import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Send,
+  Mic,
+  MicOff,
+  Volume2,
+  Sparkles,
+  Search,
+  CheckCircle2,
+  X,
+  MessageSquare,
+  Film,
+  Bell,
+  Menu as MenuIcon,
+  Flame,
+  CornerUpLeft,
+  Copy,
+  Languages,
+  Camera,
+  Plus,
+  SquarePen,
+  Phone,
+  Video,
+  Info,
+  Image as ImageIcon,
+  ThumbsUp,
+  Settings,
+  BookOpen,
+  Archive,
+  Target,
+  Moon,
+  ShieldCheck,
+  User,
+  Clock,
+  Pin,
+  Trash2,
+  Palette,
+  Tag
+} from 'lucide-react';
+
+const CHARACTERS = [
+  {
+    id: 'chloe-bestie',
+    name: 'Chloe 💅',
+    handle: '@chloe.slayqueen',
+    subtitle: 'Bạn thân mỏ hỗn & Roast master',
+    roleTag: 'Mỏ hỗn · Bạn thân',
+    statusNote: '💅 Slay period',
+    unreadCount: 2,
+    lastTime: '19:40',
+    defaultStreak: 7,
+    vibe: 'Cực kỳ cợt nhả, dùng slang Gen Z, bóc phốt ngữ pháp không kiêng nể.',
+    avatarBg: 'from-fuchsia-600 to-rose-500',
+    avatarChar: '💅',
+    accentColor: '#d946ef',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "Girl/Bro, what is that accent?! 😭 Spill the tea right now, who hurt you? And don't you dare say 'I am agree' again, it hurts my soul!",
+    initialBreakdown: {
+      translation: "Cậu ơi, cái chất giọng gì thế kia?! 😭 Hóng biến ngay đi, ai làm tổn thương cậu à? Đừng có mà nói 'I am agree' lần nữa đấy, đau đớn tâm hồn tớ quá!",
+      nativeHighlights: [
+        { phrase: "Spill the tea", level: "C1 · Slang", meaning: "Kể chuyện phiếm / Bật mí tin nóng hổi" },
+        { phrase: "hurts my soul", level: "B2 · Idiom", meaning: "Làm tổn thương sâu sắc / Nghe mà xót ruột" }
+      ]
+    },
+    starterSuggestions: [
+      "Roast my English grammar please",
+      "Spill the tea about your weekend",
+      "Teach me some savage Gen Z slang"
+    ],
+    generateReply: (text, lower) => {
+      if (lower.includes('i am agree') || lower.includes('i agree')) {
+        return {
+          en: "PLEASE STOP SAYING 'I AM AGREE'! 💀 It's 'I agree', simple as that! Go write it 100 times right now!",
+          vi: "DỪNG NGAY 'I AM AGREE' LẠI! 💀 Phải là 'I agree' nhé trời ơi! Đi chép phạt 100 lần ngay!",
+          breakdown: {
+            translation: "DỪNG NGAY 'I AM AGREE' LẠI! 💀 Phải là 'I agree' nhé trời ơi! Đi chép phạt 100 lần ngay!",
+            nativeHighlights: [
+              { phrase: "simple as that", level: "B2 · Phrase", meaning: "Đơn giản chỉ có thế thôi, không bàn cãi" }
+            ]
+          },
+          correction: { wrong: "I am agree", correct: "I agree", note: "Agree là động từ, không dùng to be đi kèm ở thì hiện tại đơn." }
+        };
+      }
+      return {
+        en: \`Bro really typed '\${text.slice(0, 26)}...' with a straight face 😭 Slay I guess! Speak longer so you don't sound like a bot!\`,
+        vi: \`Vừa gõ câu đó với vẻ mặt tỉnh queo đấy à 😭 Thôi cũng tạm slay! Nói dài thêm tí cho tự nhiên nào!\`,
+        breakdown: {
+          translation: \`Vừa gõ câu đó với vẻ mặt tỉnh queo đấy à 😭 Thôi cũng tạm slay! Nói dài thêm tí cho tự nhiên nào!\`,
+          nativeHighlights: [
+            { phrase: "with a straight face", level: "B2 · Idiom", meaning: "Vẻ mặt nghiêm túc, tỉnh bơ không biểu cảm" },
+            { phrase: "Slay", level: "Slang bản xứ", meaning: "Đỉnh, làm tốt lắm" }
+          ]
+        }
+      };
+    }
+  },
+  {
+    id: 'liam-bf',
+    name: 'Liam 🧸',
+    handle: '@liam.sweetheart',
+    subtitle: 'Bạn trai ấm áp & chu đáo',
+    roleTag: 'Người yêu · Ấm áp',
+    statusNote: '🧸 Nhớ bảo bối',
+    unreadCount: 0,
+    lastTime: '19:33',
+    defaultStreak: 14,
+    vibe: 'Ân cần, ngọt ngào, kiên nhẫn khen ngợi từng câu tiếng Anh.',
+    avatarBg: 'from-rose-500 to-amber-500',
+    avatarChar: '🧸',
+    accentColor: '#f43f5e',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "Hey honey! 🥰 You survived today! Take a deep breath. Tell me all about your day in English, I'm all ears.",
+    initialBreakdown: {
+      translation: "Chào em yêu! 🥰 Em đã vượt qua ngày hôm nay rồi! Thở phào nhẹ nhõm nhé. Kể anh nghe về một ngày của em bằng tiếng Anh nào, anh đang lắng nghe đây.",
+      nativeHighlights: [
+        { phrase: "all ears", level: "B2 · Idiom", meaning: "Chăm chú lắng nghe, dỏng tai lên nghe" },
+        { phrase: "take a deep breath", level: "A2 · Phrase", meaning: "Hít một hơi thật sâu để thư giãn" }
+      ]
+    },
+    starterSuggestions: [
+      "I had such a tiring day at work...",
+      "What are you cooking for dinner?",
+      "Can we plan a weekend getaway?"
+    ],
+    generateReply: (text, lower) => {
+      if (lower.includes('tired') || lower.includes('stress')) {
+        return {
+          en: "Come here, you did amazing today babe. ❤️ Wrap yourself in a warm blanket. What made you feel so overwhelmed?",
+          vi: "Lại đây nào, hôm nay em đã vất vả nhiều rồi ❤️ Cuộn mình vào chăn ấm nhé. Điều gì làm em thấy áp lực thế?",
+          breakdown: {
+            translation: "Lại đây nào, hôm nay em đã vất vả nhiều rồi ❤️ Cuộn mình vào chăn ấm nhé. Điều gì làm em thấy áp lực thế?",
+            nativeHighlights: [
+              { phrase: "wrap yourself in", level: "B1 · Phrasal Verb", meaning: "Quấn mình, bao bọc trong" },
+              { phrase: "overwhelmed", level: "B2 · Adjective", meaning: "Bị ngợp, quá tải cảm xúc/công việc" }
+            ]
+          }
+        };
+      }
+      return {
+        en: "Your English is getting sweeter every single day! I love listening to you talk. How was the rest of your day, sweetheart?",
+        vi: "Tiếng Anh của em ngày càng ngọt ngào và tự nhiên hơn đấy! Anh thích nghe em nói lắm. Chiều nay của em thế nào rồi?",
+        breakdown: {
+          translation: "Tiếng Anh của em ngày càng ngọt ngào và tự nhiên hơn đấy! Anh thích nghe em nói lắm. Chiều nay của em thế nào rồi?",
+          nativeHighlights: [
+            { phrase: "the rest of your day", level: "B1 · Collocation", meaning: "Khoảng thời gian còn lại trong ngày" }
+          ]
+        }
+      };
+    }
+  },
+  {
+    id: 'leo-tsundere',
+    name: 'Leo ❄️',
+    handle: '@leo.coldguy',
+    subtitle: 'Lạnh lùng, Tsundere khó tính',
+    roleTag: 'Crush lạnh lùng',
+    statusNote: '❄️ Đừng làm phiền',
+    unreadCount: 1,
+    lastTime: '18:15',
+    defaultStreak: 2,
+    vibe: 'Nói năng cộc lốc, hay chê nhưng thực ra rất quan tâm.',
+    avatarBg: 'from-slate-700 to-sky-700',
+    avatarChar: '❄️',
+    accentColor: '#0284c7',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "Tsk, you're late. Don't make excuses. What phrase did you want to practice? Don't waste my time.",
+    initialBreakdown: {
+      translation: "Tsk, cậu lại muộn rồi. Đừng có biện hộ. Cậu muốn luyện cụm từ nào? Đừng làm lãng phí thời gian của tôi.",
+      nativeHighlights: [
+        { phrase: "make excuses", level: "B1 · Collocation", meaning: "Biện hộ, viện cớ" },
+        { phrase: "waste my time", level: "A2 · Phrase", meaning: "Làm mất thời gian của tôi" }
+      ]
+    },
+    starterSuggestions: [
+      "Why are you always so cold to me?",
+      "Teach me how to sound confident",
+      "Did you miss me today?"
+    ],
+    generateReply: (text, lower) => {
+      return {
+        en: \`Your sentence is... acceptable. Not totally terrible. But your pacing is too slow. Say it again with more confidence.\`,
+        vi: \`Câu này của cậu... tạm chấp nhận được. Nhưng nhịp điệu còn chậm quá. Nói lại câu đó tự tin hơn xem nào.\`,
+        breakdown: {
+          translation: \`Câu này của cậu... tạm chấp nhận được. Nhưng nhịp điệu còn chậm quá. Nói lại câu đó tự tin hơn xem nào.\`,
+          nativeHighlights: [
+            { phrase: "pacing", level: "B2 · Noun", meaning: "Tốc độ / Nhịp điệu khi nói" }
+          ]
+        }
+      };
+    }
+  },
+  {
+    id: 'raymond-boss',
+    name: 'Mr. Raymond 👔',
+    handle: '@raymond.exec',
+    subtitle: 'Sếp tập đoàn & Cố vấn sự nghiệp',
+    roleTag: 'Công sở · Nghiêm túc',
+    statusNote: '💼 In meetings',
+    unreadCount: 0,
+    lastTime: 'CN',
+    defaultStreak: 1,
+    vibe: 'Chuyên nghiệp chuẩn Corporate English, chữa email công việc.',
+    avatarBg: 'from-blue-700 to-indigo-900',
+    avatarChar: '👔',
+    accentColor: '#3b82f6',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "Good day. Let's keep our communication concise and goal-oriented. Are you ready to review executive presentations?",
+    initialBreakdown: {
+      translation: "Xin chào. Hãy giữ cho việc trao đổi súc tích và tập trung vào mục tiêu. Bạn đã sẵn sàng xem lại các bài thuyết trình cấp điều hành chưa?",
+      nativeHighlights: [
+        { phrase: "goal-oriented", level: "B2 · Adjective", meaning: "Định hướng mục tiêu" },
+        { phrase: "concise", level: "C1 · Adjective", meaning: "Ngắn gọn, súc tích" }
+      ]
+    },
+    starterSuggestions: [
+      "How do I write a polite follow-up email?",
+      "Can we do a mock salary negotiation?",
+      "I need to reschedule the quarterly meeting"
+    ],
+    generateReply: (text, lower) => {
+      return {
+        en: "Noted. Ensure you emphasize measurable KPIs when pitching this idea. How would you justify the budget allocation?",
+        vi: "Đã ghi nhận. Hãy đảm bảo bạn nêu rõ các chỉ số KPI đo lường được khi đề xuất ý tưởng này.",
+        breakdown: {
+          translation: "Đã ghi nhận. Hãy đảm bảo bạn nêu rõ các chỉ số KPI đo lường được khi đề xuất ý tưởng này.",
+          nativeHighlights: [
+            { phrase: "pitching this idea", level: "B2 · Business", meaning: "Trình bày / chào bán ý tưởng này" },
+            { phrase: "justify the allocation", level: "C1 · Business", meaning: "Chứng minh tính hợp lý của việc phân bổ ngân sách" }
+          ]
+        }
+      };
+    }
+  },
+  {
+    id: 'elena-ielts',
+    name: 'Examiner Elena 🎯',
+    handle: '@elena.ielts85',
+    subtitle: 'Cựu giám khảo IELTS Speaking',
+    roleTag: 'IELTS 8.5+ · Nghiêm khắc',
+    statusNote: '🎯 Mock test',
+    unreadCount: 0,
+    lastTime: 'Thứ 7',
+    defaultStreak: 3,
+    vibe: 'Đánh giá band điểm trực tiếp, đặt câu hỏi Part 1-2-3.',
+    avatarBg: 'from-emerald-700 to-teal-600',
+    avatarChar: '🎯',
+    accentColor: '#059669',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "Good morning. In this mock session, I will assess your Lexical Resource. Let's start with Part 1: 'Do you work or study?'",
+    initialBreakdown: {
+      translation: "Chào buổi sáng. Trong buổi thi thử này, tôi sẽ đánh giá nguồn vốn từ vựng của bạn. Bắt đầu với Part 1 nhé: 'Bạn đang đi làm hay đi học?'",
+      nativeHighlights: [
+        { phrase: "Lexical Resource", level: "IELTS Criteria", meaning: "Tiêu chí vốn từ vựng đa dạng, chính xác" },
+        { phrase: "mock session", level: "B2 · Collocation", meaning: "Buổi thi thử / luyện tập mô phỏng" }
+      ]
+    },
+    starterSuggestions: [
+      "I am currently a university student",
+      "Let's practice IELTS Speaking Part 2",
+      "Give me Band 7+ vocabulary for environment"
+    ],
+    generateReply: (text, lower) => {
+      return {
+        en: "Good fluency. To achieve Band 7.5+, avoid generic adjectives like 'good' or 'nice'. Substitute with 'pivotal' or 'profound'.",
+        vi: "Độ trôi chảy tốt. Để đạt Band 7.5+, tránh dùng từ chung chung như 'good'. Hãy thay bằng 'pivotal' hoặc 'profound'.",
+        breakdown: {
+          translation: "Độ trôi chảy tốt. Để đạt Band 7.5+, tránh dùng từ chung chung như 'good'. Hãy thay bằng 'pivotal' hoặc 'profound'.",
+          nativeHighlights: [
+            { phrase: "pivotal", level: "C1 · Academic", meaning: "Mang tính mấu chốt, then chốt" },
+            { phrase: "profound", level: "C1 · Academic", meaning: "Sâu sắc, uyên thâm" }
+          ]
+        }
+      };
+    }
+  },
+  {
+    id: 'zack-gymbro',
+    name: 'Zack 🔥',
+    handle: '@zack.liftweights',
+    subtitle: 'Đồng nghiệp cợt nhả & Gym Bro',
+    roleTag: 'Cợt nhả · Hypebeast',
+    statusNote: '💪 Leg day!',
+    unreadCount: 0,
+    lastTime: 'Thứ 6',
+    defaultStreak: 28,
+    vibe: 'Siêu nhiệt tình, động viên học tiếng Anh như tập gym.',
+    avatarBg: 'from-amber-600 to-orange-600',
+    avatarChar: '🔥',
+    accentColor: '#f59e0b',
+    onlineStatus: 'Đang hoạt động',
+    initialGreeting: "YO CHAMP! 💪 No excuses today! English is just like bench press—if you don't use it, you lose gains! What are we working on?",
+    initialBreakdown: {
+      translation: "Ê NHÀ VÔ ĐỊCH! 💪 Hôm nay không lý do lý trấu gì nhé! Tiếng Anh cũng giống như đẩy tạ thôi—không dùng là mất cơ đấy! Hôm nay tập bài gì nào?",
+      nativeHighlights: [
+        { phrase: "lose gains", level: "Fitness Slang", meaning: "Mất cơ bắp / giảm tiến bộ" },
+        { phrase: "No excuses", level: "A2 · Phrase", meaning: "Không viện lý do" }
+      ]
+    },
+    starterSuggestions: [
+      "I skipped my study session yesterday bro...",
+      "What's your high-protein diet routine?",
+      "Let's talk about workout motivation"
+    ],
+    generateReply: (text, lower) => {
+      return {
+        en: "Bro, never skip speaking day! Reps and consistency! 10 minutes a day gets you jacked in vocabulary! Keep that pump alive!",
+        vi: "Bro ơi, không bao giờ được skip buổi luyện nói! 10 phút mỗi ngày thôi là từ vựng cuồn cuộn rồi!",
+        breakdown: {
+          translation: "Bro ơi, không bao giờ được skip buổi luyện nói! 10 phút mỗi ngày thôi là từ vựng cuồn cuộn rồi!",
+          nativeHighlights: [
+            { phrase: "jacked in vocabulary", level: "Slang bản xứ", meaning: "Vốn từ vựng 'cuồn cuộn / đồ sộ' như cơ bắp" },
+            { phrase: "consistency", level: "B2 · Noun", meaning: "Sự kiên trì, tính đều đặn" }
+          ]
+        }
+      };
+    }
+  }
+];
+
+const STORAGE_PREFIX = 'meloify_msg_v7_';
+const STREAK_STORAGE_KEY = 'meloify_streak_v7_';
+
+const getDefaultMessages = (charId) => {
+  const char = CHARACTERS.find(c => c.id === charId);
+  return [
+    {
+      id: 'init-1',
+      sender: 'bot',
+      text: char ? char.initialGreeting : 'Hello! Let us practice English together.',
+      timestamp: '19:30',
+      viTranslation: char?.initialBreakdown?.translation || null,
+      breakdown: char?.initialBreakdown || null,
+      showAnalysis: false
+    }
+  ];
+};
+
+export default function App() {
+  const [selectedCharId, setSelectedCharId] = useState(null);
+  const [isCharInfoOpen, setIsCharInfoOpen] = useState(false);
+  const [bottomTab, setBottomTab] = useState('chats');
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [messagesMap, setMessagesMap] = useState({});
+  const [streaksMap, setStreaksMap] = useState({});
+  const [inputText, setInputText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [isListening, setIsListening] = useState(false);
+  const [activeAudioId, setActiveAudioId] = useState(null);
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const [appSettings, setAppSettings] = useState({
+    autoGrammar: true,
+    instantTranslate: true,
+    aiVoice: 'en-US (Natural)',
+    dailyReminder: true,
+    darkMode: 'Bật'
+  });
+
+  const [activeContextMsg, setActiveContextMsg] = useState(null);
+  const [replyingTo, setReplyingTo] = useState(null);
+  const longPressTimerRef = useRef(null);
+  const touchPosRef = useRef({ x: 0, y: 0 });
+
+  const [edgeDragX, setEdgeDragX] = useState(0);
+  const [isEdgeDragging, setIsEdgeDragging] = useState(false);
+  const edgeSwipeRef = useRef({ startX: 0, startY: 0, isEdge: false });
+
+  const phoneContainerRef = useRef(null);
+  const messagesEndRef = useRef(null);
+  const chatInputRef = useRef(null);
+
+  const handleEdgeTouchStart = (e) => {
+    const touch = e.touches[0];
+    const containerRect = phoneContainerRef.current?.getBoundingClientRect();
+    const relativeX = containerRect ? touch.clientX - containerRect.left : touch.clientX;
+
+    if (relativeX <= 32) {
+      edgeSwipeRef.current = {
+        startX: touch.clientX,
+        startY: touch.clientY,
+        isEdge: true
+      };
+    } else {
+      edgeSwipeRef.current.isEdge = false;
+    }
+  };
+
+  const handleEdgeTouchMove = (e) => {
+    if (!edgeSwipeRef.current.isEdge) return;
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - edgeSwipeRef.current.startX;
+    const deltaY = Math.abs(touch.clientY - edgeSwipeRef.current.startY);
+
+    if (deltaX > 8 && deltaX > deltaY * 1.2) {
+      setIsEdgeDragging(true);
+      setEdgeDragX(Math.max(0, deltaX));
+    }
+  };
+
+  const handleEdgeTouchEnd = (onBackAction) => {
+    if (edgeSwipeRef.current.isEdge && isEdgeDragging) {
+      if (edgeDragX > 90) {
+        onBackAction();
+      }
+    }
+    setEdgeDragX(0);
+    setIsEdgeDragging(false);
+    edgeSwipeRef.current.isEdge = false;
+  };
+
+  useEffect(() => {
+    const loadedMsgs = {};
+    const loadedStreaks = {};
+
+    CHARACTERS.forEach(char => {
+      const savedMsg = localStorage.getItem(\`\${STORAGE_PREFIX}\${char.id}\`);
+      if (savedMsg) {
+        try {
+          loadedMsgs[char.id] = JSON.parse(savedMsg);
+        } catch (e) {
+          loadedMsgs[char.id] = getDefaultMessages(char.id);
+        }
+      } else {
+        loadedMsgs[char.id] = getDefaultMessages(char.id);
+      }
+
+      const savedStreak = localStorage.getItem(\`\${STREAK_STORAGE_KEY}\${char.id}\`);
+      if (savedStreak !== null) {
+        loadedStreaks[char.id] = parseInt(savedStreak, 10) || 0;
+      } else {
+        loadedStreaks[char.id] = char.defaultStreak;
+      }
+    });
+
+    setMessagesMap(loadedMsgs);
+    setStreaksMap(loadedStreaks);
+  }, []);
+
+  const saveMessages = (charId, newMsgs) => {
+    setMessagesMap(prev => ({ ...prev, [charId]: newMsgs }));
+    try {
+      localStorage.setItem(\`\${STORAGE_PREFIX}\${charId}\`, JSON.stringify(newMsgs));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const showToast = (text) => {
+    setToastMessage(text);
+    setTimeout(() => setToastMessage(null), 2400);
+  };
+
+  const speakText = (text, msgId) => {
+    if (!('speechSynthesis' in window)) {
+      showToast('Trình duyệt chưa hỗ trợ Text-to-Speech');
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.95;
+
+    const voices = window.speechSynthesis.getVoices();
+    const enVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Samantha') || v.name.includes('Google')));
+    if (enVoice) utterance.voice = enVoice;
+
+    setActiveAudioId(msgId);
+    utterance.onend = () => setActiveAudioId(null);
+    utterance.onerror = () => setActiveAudioId(null);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const toggleListening = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      setIsListening(true);
+      showToast('Đang mô phỏng giọng nói tiếng Anh...');
+      setTimeout(() => {
+        setIsListening(false);
+        setInputText("I practice speaking English with Meloify every day.");
+      }, 1800);
+      return;
+    }
+
+    if (isListening) {
+      setIsListening(false);
+      return;
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.continuous = false;
+
+      recognition.onstart = () => setIsListening(true);
+      recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        setInputText(transcript);
+        setIsListening(false);
+      };
+      recognition.onerror = () => {
+        setIsListening(false);
+        showToast('Không nhận dạng được âm thanh, thử lại nhé');
+      };
+      recognition.onend = () => setIsListening(false);
+      recognition.start();
+    } catch (err) {
+      setIsListening(false);
+    }
+  };
+
+  const handleTouchStart = (msg, e) => {
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    touchPosRef.current = { x: clientX, y: clientY };
+
+    longPressTimerRef.current = setTimeout(() => {
+      setActiveContextMsg(msg);
+      if (navigator.vibrate) navigator.vibrate(40);
+    }, 380);
+  };
+
+  const handleTouchMove = (e) => {
+    if (!longPressTimerRef.current) return;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    if (clientX !== undefined && clientY !== undefined) {
+      const dx = Math.abs(clientX - touchPosRef.current.x);
+      const dy = Math.abs(clientY - touchPosRef.current.y);
+      if (dx > 10 || dy > 10) {
+        clearTimeout(longPressTimerRef.current);
+        longPressTimerRef.current = null;
+      }
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (longPressTimerRef.current) {
+      clearTimeout(longPressTimerRef.current);
+      longPressTimerRef.current = null;
+    }
+  };
+
+  const handleReaction = (msgId, emoji) => {
+    if (!selectedCharId) return;
+    const currentList = messagesMap[selectedCharId] || [];
+    const updated = currentList.map(m => {
+      if (m.id === msgId) {
+        return { ...m, reaction: m.reaction === emoji ? null : emoji };
+      }
+      return m;
+    });
+    saveMessages(selectedCharId, updated);
+    setActiveContextMsg(null);
+  };
+
+  const handleCopyText = (text) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+      showToast('Đã sao chép tin nhắn');
+    }
+    setActiveContextMsg(null);
+  };
+
+  const handleTriggerReply = (msg) => {
+    setReplyingTo(msg);
+    setActiveContextMsg(null);
+    chatInputRef.current?.focus();
+  };
+
+  const toggleAnalysis = (charId, msgId) => {
+    const list = messagesMap[charId] || [];
+    const nextList = list.map(m => {
+      if (m.id === msgId) {
+        return { ...m, showAnalysis: !m.showAnalysis };
+      }
+      return m;
+    });
+    saveMessages(charId, nextList);
+  };
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    if (selectedCharId) {
+      scrollToBottom();
+    }
+  }, [selectedCharId, messagesMap, isTyping]);
+
+  const handleSendMessage = (textToSend) => {
+    const content = (textToSend || inputText).trim();
+    if (!content || !selectedCharId) return;
+
+    const currentChar = CHARACTERS.find(c => c.id === selectedCharId);
+    const nowTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const userMsg = {
+      id: \`usr-\${Date.now()}\`,
+      sender: 'user',
+      text: content,
+      timestamp: nowTime,
+      replyTo: replyingTo ? {
+        id: replyingTo.id,
+        text: replyingTo.text,
+        sender: replyingTo.sender,
+        name: replyingTo.sender === 'bot' ? currentChar.name : 'Bạn'
+      } : null
+    };
+
+    const currentList = messagesMap[selectedCharId] || [];
+    const updatedList = [...currentList, userMsg];
+    saveMessages(selectedCharId, updatedList);
+    setInputText('');
+    setReplyingTo(null);
+    setIsTyping(true);
+
+    const typingDelay = Math.min(1800, 600 + content.length * 12);
+
+    setTimeout(() => {
+      setIsTyping(false);
+      const lower = content.toLowerCase();
+      const replyData = currentChar.generateReply(content, lower);
+
+      const botMsg = {
+        id: \`bot-\${Date.now()}\`,
+        sender: 'bot',
+        text: replyData.en,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        viTranslation: replyData.vi,
+        breakdown: replyData.breakdown || null,
+        showAnalysis: false,
+        correction: replyData.correction || null
+      };
+
+      const finalMsgs = [...updatedList, botMsg];
+      saveMessages(selectedCharId, finalMsgs);
+    }, typingDelay);
+  };
+
+  const filteredCharacters = CHARACTERS.filter(char => {
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return true;
+    return (
+      char.name.toLowerCase().includes(q) ||
+      char.subtitle.toLowerCase().includes(q)
+    );
+  });
+
+  const currentChar = CHARACTERS.find(c => c.id === selectedCharId);
+  const currentMessages = selectedCharId ? (messagesMap[selectedCharId] || []) : [];
+  const currentStreak = selectedCharId ? (streaksMap[selectedCharId] ?? currentChar?.defaultStreak ?? 0) : 0;
+
+  return (
+    <div className="w-full min-h-[100dvh] bg-[#0A0A0A] flex items-center justify-center font-sans antialiased text-[#E4E6EB] selection:bg-[#0084FF] selection:text-white p-0 sm:p-4">
+      <div 
+        ref={phoneContainerRef}
+        className="w-full sm:max-w-[430px] h-[100dvh] sm:h-[890px] bg-black sm:rounded-[44px] shadow-2xl flex flex-col overflow-hidden relative border-0 sm:border-8 sm:border-[#1F1F1F]"
+      >
+        <div className="flex items-center justify-between px-6 pt-3 pb-1 z-40 bg-black text-white text-[13px] font-semibold select-none flex-shrink-0">
+          <span>20:09</span>
+          <div className="w-24 h-4 bg-[#1A1A1A] rounded-full hidden sm:block"></div>
+          <div className="flex items-center gap-1.5 text-xs">
+            <span>4G</span>
+            <div className="w-5 h-2.5 border border-white/60 rounded-xs p-0.5 flex items-center">
+              <div className="h-full w-3/4 bg-white rounded-2xs"></div>
+            </div>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {toastMessage && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              className="absolute top-12 left-1/2 -translate-x-1/2 z-50 bg-[#242526] text-white text-xs font-semibold px-4 py-2 rounded-full shadow-2xl border border-white/10 pointer-events-none flex items-center gap-2"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#0084FF]" />
+              <span>{toastMessage}</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="flex-1 relative w-full h-full overflow-hidden flex flex-col justify-between">
+          <div className="flex-1 overflow-hidden relative">
+            <AnimatePresence initial={false} mode="wait">
+              {selectedCharId ? (
+                <div
+                  key="chatroom"
+                  onTouchStart={handleEdgeTouchStart}
+                  onTouchMove={handleEdgeTouchMove}
+                  onTouchEnd={() => handleEdgeTouchEnd(() => {
+                    setSelectedCharId(null);
+                    setIsCharInfoOpen(false);
+                  })}
+                  style={{
+                    transform: \`translateX(\${edgeDragX}px)\`,
+                    transition: isEdgeDragging ? 'none' : 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                  className="w-full h-full flex flex-col bg-black text-white touch-pan-y relative will-change-transform"
+                >
+                  <div className="px-3 py-2 bg-black/90 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between flex-shrink-0 z-30">
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <button
+                        onClick={() => {
+                          setSelectedCharId(null);
+                          setIsCharInfoOpen(false);
+                        }}
+                        className="w-9 h-9 rounded-full hover:bg-white/10 active:scale-90 flex items-center justify-center text-[#0084FF] transition -ml-1 flex-shrink-0"
+                        title="Quay lại danh sách"
+                      >
+                        <ChevronLeft className="w-7 h-7 stroke-[2.6]" />
+                      </button>
+
+                      <div className="flex items-center gap-2.5 cursor-pointer min-w-0" onClick={() => setIsCharInfoOpen(true)}>
+                        <div className="relative flex-shrink-0">
+                          <div className={\`w-10 h-10 rounded-full bg-gradient-to-tr \${currentChar?.avatarBg} flex items-center justify-center text-xl shadow-sm\`}>
+                            {currentChar?.avatarChar}
+                          </div>
+                        </div>
+                        <div className="min-w-0">
+                          <div className="flex items-center gap-1.5 leading-tight">
+                            <h2 className="text-[15px] font-bold text-white truncate">
+                              {currentChar?.name}
+                            </h2>
+                            {currentStreak >= 3 && (
+                              <span
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  showToast(\`Chuỗi \${currentStreak} ngày cùng \${currentChar?.name.split(' ')[0]} 🔥\`);
+                                }}
+                                className="inline-flex items-center font-extrabold text-[13px] text-[#FF5A00] tracking-tight shrink-0 select-none hover:scale-105 active:scale-95 transition"
+                                title={\`Chuỗi \${currentStreak} ngày\`}
+                              >
+                                🔥{currentStreak}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11.5px] text-[#31A24C] font-normal flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#31A24C] inline-block animate-pulse"></span>
+                            {currentChar?.onlineStatus}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1 flex-shrink-0">
+                      <button
+                        onClick={() => showToast('Gọi thoại tiếng Anh')}
+                        className="w-8 h-8 rounded-full hover:bg-white/10 active:scale-95 text-[#0084FF] flex items-center justify-center transition"
+                      >
+                        <Phone className="w-4 h-4 fill-current stroke-[0]" />
+                      </button>
+                      <button
+                        onClick={() => showToast('Gọi video AI')}
+                        className="w-8 h-8 rounded-full hover:bg-white/10 active:scale-95 text-[#0084FF] flex items-center justify-center transition"
+                      >
+                        <Video className="w-5 h-5 fill-current stroke-[0]" />
+                      </button>
+                      <button
+                        onClick={() => setIsCharInfoOpen(true)}
+                        className={\`w-8 h-8 rounded-full active:scale-95 flex items-center justify-center transition \${
+                          isCharInfoOpen ? 'bg-white/20 text-white' : 'hover:bg-white/10 text-[#0084FF]'
+                        }\`}
+                        title="Thông tin đoạn chat"
+                      >
+                        <Info className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="flex-1 overflow-y-auto px-3.5 py-4 space-y-3.5">
+                    {currentMessages.map((msg) => {
+                      const isBot = msg.sender === 'bot';
+
+                      return (
+                        <div
+                          key={msg.id}
+                          className={\`flex gap-2.5 max-w-[88%] \${isBot ? 'mr-auto' : 'ml-auto justify-end'}\`}
+                        >
+                          {isBot && (
+                            <div className={\`w-7 h-7 rounded-full bg-gradient-to-tr \${currentChar?.avatarBg} text-white flex items-center justify-center text-xs flex-shrink-0 mt-1\`}>
+                              {currentChar?.avatarChar}
+                            </div>
+                          )}
+
+                          <div className={\`space-y-1.5 \${isBot ? 'flex-1' : 'max-w-full'}\`}>
+                            <div className="relative group">
+                              {msg.replyTo && (
+                                <div className={\`text-[11px] px-2.5 py-1 mb-1 rounded-lg border-l-2 truncate \${
+                                  isBot 
+                                    ? 'bg-[#242526] text-zinc-400 border-[#0084FF]' 
+                                    : 'bg-[#0070D8] text-white/90 border-white'
+                                }\`}>
+                                <span className="font-bold mr-1">{msg.replyTo.name}:</span>
+                                  {msg.replyTo.text}
+                                </div>
+                              )}
+
+                              <div
+                                onTouchStart={(e) => handleTouchStart(msg, e)}
+                                onTouchMove={handleTouchMove}
+                                onTouchEnd={handleTouchEnd}
+                                onMouseDown={(e) => handleTouchStart(msg, e)}
+                                onMouseMove={handleTouchMove}
+                                onMouseUp={handleTouchEnd}
+                                onMouseLeave={handleTouchEnd}
+                                onContextMenu={(e) => {
+                                  e.preventDefault();
+                                  setActiveContextMsg(msg);
+                                }}
+                                className={\`p-3 rounded-2xl text-[14px] leading-relaxed select-none cursor-pointer active:scale-[0.98] transition-transform \${
+                                  isBot
+                                    ? 'bg-[#242526] text-[#E4E6EB] rounded-tl-xs'
+                                    : 'bg-[#0084FF] text-white rounded-tr-xs'
+                                }\`}
+                              >
+                                {msg.text}
+                              </div>
+
+                              {msg.reaction && (
+                                <div
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleReaction(msg.id, msg.reaction);
+                                  }}
+                                  className={\`absolute -bottom-2 \${isBot ? 'left-3' : 'right-2'} bg-[#242526] text-white border border-white/10 shadow-md rounded-full px-1.5 py-0.5 text-xs flex items-center gap-0.5 cursor-pointer hover:scale-110 active:scale-95 transition-transform z-10\`}
+                                >
+                                  <span>{msg.reaction}</span>
+                                </div>
+                              )}
+                            </div>
+
+                            {msg.correction && appSettings.autoGrammar && (
+                              <div className="bg-[#1C2C24] border border-[#31A24C]/40 rounded-xl p-2.5 text-xs text-emerald-200 space-y-1">
+                                <div className="flex items-center gap-1 font-bold text-[#31A24C] text-[10.5px] uppercase tracking-wider">
+                                  <CheckCircle2 className="w-3.5 h-3.5" />
+                                  Gợi ý sửa câu tự nhiên hơn
+                                </div>
+                                <div className="flex flex-col gap-0.5 text-[12px]">
+                                  <span className="text-rose-400 line-through">"{msg.correction.wrong}"</span>
+                                  <span className="font-semibold text-emerald-300">
+                                    → "{msg.correction.correct}"
+                                  </span>
+                                  <p className="text-[10px] text-emerald-400/80 mt-0.5">{msg.correction.note}</p>
+                                </div>
+                              </div>
+                            )}
+
+                            {msg.showAnalysis && (
+                              <motion.div
+                                initial={{ opacity: 0, y: -4 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="bg-[#1E2024] border border-white/10 rounded-2xl p-3 text-xs space-y-2.5 shadow-lg"
+                              >
+                                {msg.viTranslation && (
+                                  <div className="space-y-1">
+                                    <div className="flex items-center justify-between">
+                                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#0084FF] flex items-center gap-1">
+                                        <Languages className="w-3 h-3" />
+                                        Bản dịch tiếng Việt
+                                      </span>
+                                      <button
+                                        onClick={() => toggleAnalysis(selectedCharId, msg.id)}
+                                        className="text-[10px] text-zinc-400 hover:text-white"
+                                      >
+                                        Thu gọn
+                                      </button>
+                                    </div>
+                                    <p className="text-[12.5px] text-zinc-200 italic leading-relaxed">
+                                      🇻🇳 {msg.viTranslation}
+                                    </p>
+                                  </div>
+                                )}
+
+                                {msg.breakdown?.nativeHighlights && msg.breakdown.nativeHighlights.length > 0 && (
+                                  <div className="border-t border-white/[0.08] pt-2 space-y-1.5">
+                                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1">
+                                      <Sparkles className="w-3 h-3" />
+                                      Cụm từ người bản xứ hay dùng
+                                    </span>
+                                    <div className="space-y-1.5">
+                                      {msg.breakdown.nativeHighlights.map((item, hIdx) => (
+                                        <div key={hIdx} className="bg-[#2A2B2E] p-2 rounded-xl flex items-start justify-between gap-2">
+                                          <div>
+                                            <span className="font-bold text-white text-[12px]">"{item.phrase}"</span>
+                                            <p className="text-[11px] text-zinc-300 mt-0.5">{item.meaning}</p>
+                                          </div>
+                                          <span className="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-[#0084FF]/20 text-[#0084FF] border border-[#0084FF]/30 whitespace-nowrap">
+                                            {item.level}
+                                          </span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </motion.div>
+                            )}
+
+                            <div className="flex items-center justify-between text-[10px] text-zinc-500 px-1">
+                              {isBot ? (
+                                <button
+                                  onClick={() => toggleAnalysis(selectedCharId, msg.id)}
+                                  className="text-[11px] font-semibold text-[#8A8D91] hover:text-[#0084FF] transition flex items-center gap-1"
+                                >
+                                  <Languages className="w-3 h-3" />
+                                  <span>{msg.showAnalysis ? 'Ẩn dịch' : 'Dịch & Phân tích CEFR'}</span>
+                                </button>
+                              ) : <span />}
+                              <span>{msg.timestamp}</span>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+
+                    {isTyping && (
+                      <div className="flex gap-2 max-w-[80%] items-center">
+                        <div className={\`w-7 h-7 rounded-full bg-gradient-to-tr \${currentChar?.avatarBg} text-white flex items-center justify-center text-xs flex-shrink-0\`}>
+                          {currentChar?.avatarChar}
+                        </div>
+                        <div className="bg-[#242526] px-3.5 py-2.5 rounded-2xl rounded-tl-xs flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#8A8D91] animate-bounce"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#8A8D91] animate-bounce [animation-delay:0.2s]"></span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#8A8D91] animate-bounce [animation-delay:0.4s]"></span>
+                        </div>
+                      </div>
+                    )}
+
+                    <div ref={messagesEndRef} />
+                  </div>
+
+                  {currentChar?.starterSuggestions && (
+                    <div className="px-3 pt-1 pb-1 flex-shrink-0 bg-black/40">
+                      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[11px]">
+                        <span className="text-[10px] uppercase font-bold text-zinc-500 whitespace-nowrap">Gợi ý:</span>
+                        {currentChar.starterSuggestions.map((prompt, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => handleSendMessage(prompt)}
+                            className="whitespace-nowrap px-3 py-1 rounded-full bg-[#242526] text-zinc-200 font-medium border border-white/10 hover:border-[#0084FF] hover:text-[#0084FF] active:scale-95 transition"
+                          >
+                            💬 {prompt}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="p-2.5 bg-black border-t border-white/[0.08] z-20 flex-shrink-0">
+                    {replyingTo && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-2 px-3 py-1.5 bg-[#242526] border border-white/10 rounded-xl flex items-center justify-between text-xs"
+                      >
+                        <div className="flex items-center gap-2 truncate">
+                          <CornerUpLeft className="w-3.5 h-3.5 text-[#0084FF] flex-shrink-0" />
+                          <div className="truncate">
+                            <span className="text-zinc-400 font-medium mr-1">
+                              Trả lời <strong className="text-white">{replyingTo.sender === 'bot' ? currentChar?.name : 'Bạn'}</strong>:
+                            </span>
+                            <span className="text-zinc-300 italic truncate font-normal">"{replyingTo.text}"</span>
+                          </div>
+                        </div>
+                        <button
+                          onClick={() => setReplyingTo(null)}
+                          className="p-1 text-zinc-400 hover:text-white active:scale-90 transition rounded-full"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      </motion.div>
+                    )}
+
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSendMessage();
+                      }}
+                      className="flex items-center gap-2"
+                    >
+                      <button
+                        type="button"
+                        onClick={() => showToast('Đính kèm ảnh / tệp')}
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#0084FF] active:scale-90"
+                      >
+                        <Plus className="w-5 h-5 stroke-[2.4]" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => showToast('Mở máy ảnh')}
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#0084FF] active:scale-90"
+                      >
+                        <Camera className="w-5 h-5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => showToast('Chọn ảnh từ thư viện')}
+                        className="w-8 h-8 rounded-full flex items-center justify-center text-[#0084FF] active:scale-90"
+                      >
+                        <ImageIcon className="w-5 h-5" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={toggleListening}
+                        className={\`w-8 h-8 rounded-full flex items-center justify-center transition active:scale-90 \${
+                          isListening ? 'text-rose-500 animate-pulse' : 'text-[#0084FF]'
+                        }\`}
+                      >
+                        {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+                      </button>
+
+                      <div className="flex-1 relative">
+                        <input
+                          ref={chatInputRef}
+                          type="text"
+                          value={inputText}
+                          onChange={(e) => setInputText(e.target.value)}
+                          placeholder="Aa"
+                          className="w-full bg-[#242526] focus:bg-[#3A3B3C] text-white placeholder:text-[#8A8D91] text-[14px] rounded-full py-2 px-3.5 outline-none transition"
+                        />
+                      </div>
+
+                      {inputText.trim() ? (
+                        <button
+                          type="submit"
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-[#0084FF] active:scale-95 transition"
+                        >
+                          <Send className="w-5 h-5" />
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => handleSendMessage('👍')}
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-[#0084FF] active:scale-90 transition"
+                        >
+                          <ThumbsUp className="w-5 h-5 fill-current stroke-[0]" />
+                        </button>
+                      )}
+                    </form>
+                  </div>
+
+                  <AnimatePresence>
+                    {activeContextMsg && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setActiveContextMsg(null)}
+                        className="absolute inset-0 z-50 bg-black/75 backdrop-blur-xl flex flex-col items-center justify-center p-4 selection:bg-transparent"
+                      >
+                        <motion.div
+                          initial={{ scale: 0.92, opacity: 0, y: 12 }}
+                          animate={{ scale: 1, opacity: 1, y: 0 }}
+                          exit={{ scale: 0.92, opacity: 0, y: 12 }}
+                          transition={{ type: "spring", stiffness: 420, damping: 30 }}
+                          onClick={(e) => e.stopPropagation()}
+                          className="w-full max-w-[340px] flex flex-col items-center gap-3.5"
+                        >
+                          <div className="bg-[#242526] text-white py-1.5 px-3 rounded-full flex items-center gap-2 shadow-2xl border border-white/10">
+                            {['❤️', '😆', '😮', '😢', '😡', '💗'].map((emoji) => (
+                              <button
+                                key={emoji}
+                                onClick={() => handleReaction(activeContextMsg.id, emoji)}
+                                className="flex flex-col items-center transition hover:scale-125 active:scale-95 py-0.5 px-1 focus:outline-none"
+                              >
+                                <span className={\`text-2xl transition-transform \${
+                                  activeContextMsg.reaction === emoji ? 'scale-110 -translate-y-0.5' : ''
+                                }\`}>
+                                  {emoji}
+                                </span>
+                                {activeContextMsg.reaction === emoji ? (
+                                  <span className="w-1 h-1 bg-white rounded-full mt-0.5 animate-pulse" />
+                                ) : (
+                                  <span className="w-1 h-1 opacity-0 mt-0.5" />
+                                )}
+                              </button>
+                            ))}
+
+                            <div className="w-[1px] h-5 bg-white/15 mx-0.5" />
+
+                            <button
+                              onClick={() => {
+                                showToast('Chụp ảnh / Tải ảnh lên');
+                                setActiveContextMsg(null);
+                              }}
+                              className="w-7 h-7 rounded-full bg-[#1877F2] text-white flex items-center justify-center active:scale-90 transition hover:brightness-110 shadow-xs"
+                              title="Gửi ảnh"
+                            >
+                              <Camera className="w-3.5 h-3.5 stroke-[2.2]" />
+                            </button>
+
+                            <button
+                              onClick={() => {
+                                showToast('Thêm biểu tượng cảm xúc');
+                                setActiveContextMsg(null);
+                              }}
+                              className="w-7 h-7 rounded-full bg-[#3A3B3C] text-white/90 flex items-center justify-center active:scale-90 transition hover:bg-[#4E4F50]"
+                              title="Xem thêm cảm xúc"
+                            >
+                              <Plus className="w-4 h-4 stroke-[2.5]" />
+                            </button>
+                          </div>
+
+                          <div className="w-full flex justify-center">
+                            <div className="relative max-w-[88%]">
+                              <div
+                                className={\`p-3.5 rounded-2xl text-[14px] leading-relaxed shadow-2xl select-none font-normal \${
+                                  activeContextMsg.sender === 'bot'
+                                    ? 'bg-[#2A2B2E] text-white border border-white/10'
+                                    : 'bg-[#0084FF] text-white'
+                                }\`}
+                              >
+                                {activeContextMsg.text}
+                              </div>
+
+                              {activeContextMsg.reaction && (
+                                <div className="absolute -bottom-2.5 right-3 bg-[#242526] text-white border border-white/15 shadow-md rounded-full px-1.5 py-0.5 text-xs flex items-center">
+                                  <span>{activeContextMsg.reaction}</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="bg-[#242526] border border-white/10 rounded-2xl w-[220px] overflow-hidden shadow-2xl divide-y divide-white/[0.08] text-white text-[13.5px]">
+                            <button
+                              onClick={() => handleTriggerReply(activeContextMsg)}
+                              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/10 active:bg-white/15 transition text-left font-medium"
+                            >
+                              <span>Trả lời</span>
+                              <CornerUpLeft className="w-4 h-4 text-white/80 stroke-[2.2]" />
+                            </button>
+
+                            <button
+                              onClick={() => handleCopyText(activeContextMsg.text)}
+                              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/10 active:bg-white/15 transition text-left font-medium"
+                            >
+                              <span>Sao chép</span>
+                              <Copy className="w-4 h-4 text-white/80 stroke-[2]" />
+                            </button>
+
+                            <button
+                              onClick={() => {
+                                toggleAnalysis(selectedCharId, activeContextMsg.id);
+                                setActiveContextMsg(null);
+                                showToast('Đã mở Dịch & Phân tích từ vựng');
+                              }}
+                              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/10 active:bg-white/15 transition text-left font-medium"
+                            >
+                              <span>Dịch & Cụm từ CEFR</span>
+                              <Languages className="w-4 h-4 text-emerald-400 stroke-[2]" />
+                            </button>
+
+                            <button
+                              onClick={() => {
+                                speakText(activeContextMsg.text, activeContextMsg.id);
+                                showToast('Đang phát âm tiếng Anh...');
+                                setActiveContextMsg(null);
+                              }}
+                              className="w-full px-4 py-3 flex items-center justify-between hover:bg-white/10 active:bg-white/15 transition text-left font-medium"
+                            >
+                              <span>Phát âm</span>
+                              <Volume2 className="w-4 h-4 text-[#0084FF] stroke-[2]" />
+                            </button>
+                          </div>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <AnimatePresence>
+                    {isCharInfoOpen && (
+                      <div
+                        key="char-info-screen"
+                        onTouchStart={handleEdgeTouchStart}
+                        onTouchMove={handleEdgeTouchMove}
+                        onTouchEnd={() => handleEdgeTouchEnd(() => setIsCharInfoOpen(false))}
+                        style={{
+                          transform: \`translateX(\${edgeDragX}px)\`,
+                          transition: isEdgeDragging ? 'none' : 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
+                        }}
+                        className="absolute inset-0 z-40 bg-black text-white flex flex-col overflow-y-auto no-scrollbar touch-pan-y will-change-transform"
+                      >
+                        <div className="px-3 py-2 bg-black/90 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between sticky top-0 z-30">
+                          <button
+                            onClick={() => setIsCharInfoOpen(false)}
+                            className="w-9 h-9 rounded-full hover:bg-white/10 active:scale-90 flex items-center justify-center text-white transition -ml-1"
+                            title="Quay lại chat"
+                          >
+                            <ChevronLeft className="w-7 h-7 stroke-[2.6]" />
+                          </button>
+                          <h3 className="text-[16px] font-bold text-white truncate max-w-[200px]">
+                            {currentChar?.name}
+                          </h3>
+                          <div className="w-9" />
+                        </div>
+
+                        <div className="flex flex-col items-center pt-6 pb-4 px-4 text-center">
+                          <div className="relative mb-3">
+                            <div className={\`w-24 h-24 rounded-full bg-gradient-to-tr \${currentChar?.avatarBg} flex items-center justify-center text-4xl shadow-2xl\`}>
+                              {currentChar?.avatarChar}
+                            </div>
+                          </div>
+                          <h2 className="text-2xl font-black text-white tracking-tight flex items-center gap-1.5 justify-center">
+                            {currentChar?.name}
+                          </h2>
+                          <p className="text-[12.5px] text-[#8A8D91] mt-0.5 font-mono">
+                            {currentChar?.handle || '@meloify.ai'}
+                          </p>
+
+                          <div className="flex items-center justify-center gap-5 mt-5">
+                            {[
+                              { label: 'Tính cách', icon: User, onClick: () => showToast(\`Tính cách: \${currentChar?.vibe}\`) },
+                              { label: 'Biệt danh', icon: Tag, onClick: () => showToast(\`Biệt danh hiện tại: \${currentChar?.name}\`) },
+                              { label: 'Tìm kiếm', icon: Search, onClick: () => showToast('Tìm kiếm từ vựng trong đoạn chat') },
+                              { label: 'Tùy chỉnh', icon: Palette, onClick: () => showToast('Đổi chủ đề / Giọng đọc của nhân vật') }
+                            ].map((btn, bIdx) => {
+                              const BIcon = btn.icon;
+                              return (
+                                <button
+                                  key={bIdx}
+                                  onClick={btn.onClick}
+                                  className="flex flex-col items-center gap-1.5 group active:scale-95 transition"
+                                >
+                                  <div className="w-11 h-11 rounded-full bg-[#242526] group-hover:bg-[#3A3B3C] text-white flex items-center justify-center shadow-md">
+                                    <BIcon className="w-5 h-5" />
+                                  </div>
+                                  <span className="text-[11.5px] text-zinc-300 font-medium">{btn.label}</span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        </div>
+
+                        <div className="px-4 space-y-4 pb-12">
+                          <div>
+                            <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5 uppercase tracking-wide">
+                              Thông tin về đoạn chat
+                            </p>
+                            <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.06] text-[14px]">
+                              <div className="p-3.5 space-y-2.5">
+                                <div className="grid grid-cols-3 gap-2">
+                                  <div className="bg-[#18191A] p-2.5 rounded-xl border border-white/5 flex flex-col justify-between aspect-square">
+                                    <span className="text-[10px] text-amber-400 font-bold uppercase">C1 Slang</span>
+                                    <span className="text-[11.5px] font-bold text-white line-clamp-2">Spill the tea</span>
+                                  </div>
+                                  <div className="bg-[#18191A] p-2.5 rounded-xl border border-white/5 flex flex-col justify-between aspect-square">
+                                    <span className="text-[10px] text-emerald-400 font-bold uppercase">Grammar</span>
+                                    <span className="text-[11.5px] font-bold text-white line-clamp-2">I agree (không to be)</span>
+                                  </div>
+                                  <div className="bg-[#18191A] p-2.5 rounded-xl border border-white/5 flex flex-col justify-between aspect-square">
+                                    <span className="text-[10px] text-sky-400 font-bold uppercase">B2 Idiom</span>
+                                    <span className="text-[11.5px] font-bold text-white line-clamp-2">Straight face</span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div
+                                onClick={() => showToast('Mở kho từ vựng đã lưu trong đoạn chat')}
+                                className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <BookOpen className="w-5 h-5 text-[#0084FF]" />
+                                  <span>Từ vựng, liên kết & ghi chú</span>
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                              </div>
+
+                              <div
+                                onClick={() => showToast('Xem danh sách câu nói đã ghim')}
+                                className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Pin className="w-5 h-5 text-amber-400" />
+                                  <span>Tin nhắn & Câu mẫu đã ghim</span>
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5 uppercase tracking-wide">
+                              Hành động & Nhắc nhở
+                            </p>
+                            <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.06] text-[14px]">
+                              <div
+                                onClick={() => showToast(\`Đã bật thông báo từ \${currentChar?.name.split(' ')[0]}\`)}
+                                className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Bell className="w-5 h-5 text-zinc-300" />
+                                  <span>Thông báo luyện nói hàng ngày</span>
+                                </div>
+                                <span className="text-xs text-zinc-400 font-medium">Bật</span>
+                              </div>
+
+                              <div
+                                onClick={() => showToast('Giọng đọc: en-US Natural')}
+                                className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Volume2 className="w-5 h-5 text-zinc-300" />
+                                  <span>Giọng đọc & Tốc độ phát âm</span>
+                                </div>
+                                <div className="flex items-center gap-1 text-xs text-zinc-400">
+                                  <span>0.95x</span>
+                                  <ChevronRight className="w-4 h-4" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div>
+                            <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5 uppercase tracking-wide">
+                              Quản lý hội thoại
+                            </p>
+                            <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.06] text-[14px]">
+                              <div
+                                onClick={() => {
+                                  saveMessages(selectedCharId, getDefaultMessages(selectedCharId));
+                                  showToast('Đã đặt lại cuộc trò chuyện mới');
+                                  setIsCharInfoOpen(false);
+                                }}
+                                className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <Clock className="w-5 h-5 text-sky-400" />
+                                  <span>Bắt đầu lại cuộc hội thoại</span>
+                                </div>
+                                <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                              </div>
+
+                              <div
+                                onClick={() => {
+                                  saveMessages(selectedCharId, []);
+                                  showToast('Đã xóa sạch đoạn chat');
+                                  setIsCharInfoOpen(false);
+                                }}
+                                className="flex items-center gap-3 p-3.5 cursor-pointer hover:bg-rose-500/10 text-rose-500 transition active:bg-rose-500/20 font-medium"
+                              >
+                                <Trash2 className="w-5 h-5 text-rose-500" />
+                                <span>Xóa đoạn chat</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </AnimatePresence>
+
+                </div>
+              ) : isSettingsOpen ? (
+                <div
+                  key="settings-page"
+                  onTouchStart={handleEdgeTouchStart}
+                  onTouchMove={handleEdgeTouchMove}
+                  onTouchEnd={() => handleEdgeTouchEnd(() => setIsSettingsOpen(false))}
+                  style={{
+                    transform: \`translateX(\${edgeDragX}px)\`,
+                    transition: isEdgeDragging ? 'none' : 'transform 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                  className="w-full h-full flex flex-col bg-black text-white overflow-y-auto no-scrollbar touch-pan-y pb-20 will-change-transform"
+                >
+                  <div className="px-3 py-2 bg-black/90 backdrop-blur-xl border-b border-white/[0.08] flex items-center justify-between sticky top-0 z-30">
+                    <button
+                      onClick={() => setIsSettingsOpen(false)}
+                      className="w-9 h-9 rounded-full hover:bg-white/10 active:scale-90 flex items-center justify-center text-[#0084FF] transition -ml-1"
+                      title="Quay lại"
+                    >
+                      <ChevronLeft className="w-7 h-7 stroke-[2.6]" />
+                    </button>
+                    <h2 className="text-[17px] font-bold text-white tracking-tight">Cài đặt</h2>
+                    <div className="w-9"></div>
+                  </div>
+
+                  <div className="flex flex-col items-center pt-5 pb-4 px-4 text-center">
+                    <div className="relative mb-2.5">
+                      <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-indigo-500 via-pink-500 to-amber-400 flex items-center justify-center text-3xl font-extrabold text-white shadow-xl">
+                        A
+                      </div>
+                      <button
+                        onClick={() => showToast('Đổi ảnh đại diện')}
+                        className="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-[#3A3B3C] border-2 border-black flex items-center justify-center text-white active:scale-90 shadow-md"
+                        title="Đổi ảnh"
+                      >
+                        <Camera className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                    <h3 className="text-xl font-bold text-white leading-tight">Anh Huu</h3>
+                    <p className="text-[12px] text-zinc-400 mt-0.5">Trình độ B1 · Intermediate Speaker</p>
+
+                    <button
+                      onClick={() => showToast('Mở trang cá nhân học tập')}
+                      className="mt-3 px-4 py-1.5 rounded-full bg-[#242526] hover:bg-[#3A3B3C] text-white text-[13px] font-semibold transition active:scale-95 border border-white/10"
+                    >
+                      Xem trang cá nhân
+                    </button>
+                  </div>
+
+                  <div className="px-4 space-y-4">
+                    <div>
+                      <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5 uppercase tracking-wide">
+                        Trải nghiệm AI & Luyện tập
+                      </p>
+                      <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.06] text-[14px]">
+                        <div
+                          onClick={() => {
+                            setAppSettings(p => ({ ...p, autoGrammar: !p.autoGrammar }));
+                            showToast(appSettings.autoGrammar ? 'Đã tắt tự động sửa lỗi' : 'Đã bật tự động sửa lỗi');
+                          }}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Sparkles className="w-5 h-5 text-[#0084FF]" />
+                            <span>Tự động bắt lỗi ngữ pháp</span>
+                          </div>
+                          <span className="text-[13px] font-semibold text-[#8A8D91]">
+                            {appSettings.autoGrammar ? 'Bật' : 'Tắt'}
+                          </span>
+                        </div>
+
+                        <div
+                          onClick={() => {
+                            setAppSettings(p => ({ ...p, instantTranslate: !p.instantTranslate }));
+                            showToast(appSettings.instantTranslate ? 'Đã tắt gợi ý dịch' : 'Đã bật gợi ý dịch');
+                          }}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Languages className="w-5 h-5 text-emerald-400" />
+                            <span>Dịch tiếng Việt 1-chạm</span>
+                          </div>
+                          <span className="text-[13px] font-semibold text-[#8A8D91]">
+                            {appSettings.instantTranslate ? 'Bật' : 'Tắt'}
+                          </span>
+                        </div>
+
+                        <div
+                          onClick={() => showToast('Giọng đọc: en-US Samantha / Natural')}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Volume2 className="w-5 h-5 text-amber-400" />
+                            <span>Giọng đọc AI (Text-to-Speech)</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-[13px] text-[#8A8D91]">
+                            <span>{appSettings.aiVoice}</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5 uppercase tracking-wide">
+                        Tùy chọn ứng dụng
+                      </p>
+                      <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.06] text-[14px]">
+                        <div
+                          onClick={() => showToast('Giao diện đang ở chế độ Tối (Dark)')}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Moon className="w-5 h-5 text-indigo-400" />
+                            <span>Chế độ tối</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-[13px] text-[#8A8D91]">
+                            <span>Bật</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </div>
+                        </div>
+
+                        <div
+                          onClick={() => {
+                            setAppSettings(p => ({ ...p, dailyReminder: !p.dailyReminder }));
+                            showToast(appSettings.dailyReminder ? 'Đã tắt nhắc giữ chuỗi' : 'Đã bật nhắc nhở giữ chuỗi');
+                          }}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Flame className="w-5 h-5 text-[#FF5A00]" />
+                            <span>Thông báo giữ chuỗi 🔥</span>
+                          </div>
+                          <span className="text-[13px] font-semibold text-[#8A8D91]">
+                            {appSettings.dailyReminder ? 'Bật' : 'Tắt'}
+                          </span>
+                        </div>
+
+                        <div
+                          onClick={() => showToast('Lịch sử luyện tập được bảo mật riêng tư')}
+                          className="flex items-center justify-between p-3.5 cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3">
+                            <ShieldCheck className="w-5 h-5 text-teal-400" />
+                            <span>Quyền riêng tư & An toàn</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <motion.div
+                  key="maintabs"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="w-full h-full flex flex-col bg-black overflow-y-auto relative no-scrollbar pb-16"
+                >
+                  {bottomTab === 'chats' && (
+                    <div className="flex flex-col">
+                      <div className="px-4 pt-3 pb-2 flex items-center justify-between flex-shrink-0 sticky top-0 bg-black z-20">
+                        <h1 className="text-[28px] font-black text-white tracking-tight leading-none font-sans lowercase">
+                          melody
+                        </h1>
+
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => showToast('Soạn tin nhắn mới')}
+                            className="w-9 h-9 rounded-full bg-[#242526] hover:bg-[#3A3B3C] active:scale-95 text-white flex items-center justify-center transition"
+                            title="Soạn tin"
+                          >
+                            <SquarePen className="w-5 h-5 stroke-[2.2]" />
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="px-4 pt-1 pb-3 flex-shrink-0">
+                        <div className="relative">
+                          <Search className="w-4 h-4 text-[#8A8D91] absolute left-3.5 top-3" />
+                          <input
+                            type="text"
+                            placeholder="Hỏi Meloify AI hoặc tìm kiếm"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full bg-[#242526] focus:bg-[#3A3B3C] text-sm text-white placeholder:text-[#8A8D91] pl-10 pr-9 py-2.5 rounded-full outline-none transition"
+                          />
+                          {searchQuery && (
+                            <button onClick={() => setSearchQuery('')} className="absolute right-3 top-3 text-[#8A8D91]">
+                              <X className="w-4 h-4" />
+                            </button>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="px-3 py-1 border-b border-white/[0.06] flex-shrink-0">
+                        <div className="flex items-start gap-2.5 overflow-x-auto no-scrollbar pt-1 pb-1">
+                          <div 
+                            className="flex flex-col items-center flex-shrink-0 cursor-pointer group" 
+                            onClick={() => showToast('Chia sẻ suy nghĩ của bạn')}
+                          >
+                            <div className="relative flex flex-col items-center">
+                              <div className="bg-[#242526] border border-white/10 text-zinc-300 text-[10.5px] font-normal px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-md max-w-[76px] truncate text-center">
+                                Bạn đang nghĩ gì?
+                              </div>
+                              <div className="w-1.5 h-1.5 bg-[#242526] rounded-full border border-white/10 -mt-0.5 mb-0.5" />
+                              
+                              <div className="relative">
+                                <div className="w-[52px] h-[52px] rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center text-xl text-white font-bold">
+                                  A
+                                </div>
+                                <span className="absolute bottom-0 right-0 w-4.5 h-4.5 bg-[#3A3B3C] border-2 border-black rounded-full flex items-center justify-center text-white text-[11px] font-bold">
+                                  +
+                                </span>
+                              </div>
+                            </div>
+                            <span className="text-[11.5px] font-medium text-zinc-400 mt-1">Tạo tin</span>
+                          </div>
+
+                          {CHARACTERS.map(c => (
+                            <button
+                              key={\`story-\${c.id}\`}
+                              onClick={() => setSelectedCharId(c.id)}
+                              className="flex flex-col items-center flex-shrink-0 group focus:outline-none"
+                            >
+                              <div className="relative flex flex-col items-center">
+                                <div className="bg-[#242526] border border-white/10 text-white text-[10.5px] font-medium px-2 py-0.5 rounded-full whitespace-nowrap shadow-md truncate max-w-[72px] text-center">
+                                  {c.statusNote}
+                                </div>
+                                <div className="w-1.5 h-1.5 bg-[#242526] rounded-full border border-white/10 -mt-0.5 mb-0.5" />
+
+                                <div className="relative">
+                                  <div className={\`w-[52px] h-[52px] rounded-full bg-gradient-to-tr \${c.avatarBg} flex items-center justify-center text-xl group-hover:scale-105 transition shadow-sm\`}>
+                                    {c.avatarChar}
+                                  </div>
+                                  <span className="absolute bottom-0 right-0 w-3 h-3 bg-[#31A24C] border-2 border-black rounded-full"></span>
+                                </div>
+                              </div>
+                              <span className="text-[11.5px] font-medium text-white truncate max-w-[62px] text-center mt-1">
+                                {c.name.split(' ')[0]}
+                              </span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="px-2 py-1 divide-y divide-white/[0.04]">
+                        {filteredCharacters.length === 0 ? (
+                          <div className="p-8 text-center text-zinc-500 text-xs">
+                            Không tìm thấy nhân vật nào.
+                          </div>
+                        ) : (
+                          filteredCharacters.map(char => {
+                            const msgs = messagesMap[char.id] || [];
+                            const lastMsg = msgs[msgs.length - 1];
+                            const charStreak = streaksMap[char.id] ?? char.defaultStreak ?? 0;
+
+                            return (
+                              <motion.button
+                                whileTap={{ scale: 0.98 }}
+                                key={char.id}
+                                onClick={() => setSelectedCharId(char.id)}
+                                className="w-full flex items-center gap-3.5 p-3 rounded-2xl hover:bg-white/[0.04] text-left transition duration-150 group"
+                              >
+                                <div className="relative flex-shrink-0">
+                                  <div className={\`w-[56px] h-[56px] rounded-full bg-gradient-to-tr \${char.avatarBg} flex items-center justify-center text-2xl shadow-sm group-hover:scale-102 transition\`}>
+                                    {char.avatarChar}
+                                  </div>
+                                  <span className="absolute bottom-0.5 right-0.5 w-3.5 h-3.5 bg-[#31A24C] border-2 border-black rounded-full"></span>
+                                </div>
+
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center justify-between gap-1 mb-0.5">
+                                    <div className="flex items-center gap-1.5 min-w-0 pr-1">
+                                      <h2 className="text-[16px] font-bold text-white group-hover:text-[#0084FF] transition truncate">
+                                        {char.name}
+                                      </h2>
+
+                                      {charStreak >= 3 && (
+                                        <span
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            showToast(\`Chuỗi luyện nói 🔥\${charStreak} ngày cùng \${char.name.split(' ')[0]}\`);
+                                          }}
+                                          className="inline-flex items-center font-extrabold text-[13.5px] text-[#FF5A00] tracking-tight shrink-0 select-none hover:scale-110 active:scale-95 transition"
+                                          title={\`Chuỗi \${charStreak} ngày\`}
+                                        >
+                                          🔥{charStreak}
+                                        </span>
+                                      )}
+                                    </div>
+
+                                    <span className="text-[12px] text-[#8A8D91] font-normal whitespace-nowrap flex-shrink-0">
+                                      {char.lastTime}
+                                    </span>
+                                  </div>
+
+                                  <div className="flex items-center justify-between gap-2">
+                                    <p className={\`text-[14px] truncate line-clamp-1 \${char.unreadCount > 0 ? 'text-white font-semibold' : 'text-[#8A8D91]'}\`}>
+                                      {lastMsg ? (
+                                        <>
+                                          {lastMsg.sender === 'user' && <span className="text-zinc-300 font-normal">Bạn: </span>}
+                                          {lastMsg.text}
+                                        </>
+                                      ) : char.subtitle}
+                                    </p>
+
+                                    {char.unreadCount > 0 && (
+                                      <span className="w-2.5 h-2.5 rounded-full bg-[#0084FF] flex-shrink-0"></span>
+                                    )}
+                                  </div>
+                                </div>
+                              </motion.button>
+                            );
+                          })
+                        )}
+                      </div>
+
+                      <div className="fixed bottom-18 right-4 z-30">
+                        <button
+                          onClick={() => {
+                            setSelectedCharId('chloe-bestie');
+                            showToast('Bắt đầu hội thoại cùng AI');
+                          }}
+                          className="bg-[#242526]/95 hover:bg-[#3A3B3C] active:scale-95 text-white border border-white/10 rounded-full px-4 py-2.5 shadow-2xl flex items-center gap-2.5 backdrop-blur-md transition"
+                        >
+                          <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-[#9B51E0] via-[#0084FF] to-[#00C6FF] flex items-center justify-center animate-spin [animation-duration:6s]">
+                            <Sparkles className="w-3 h-3 text-white" />
+                          </div>
+                          <span className="text-[13.5px] font-bold text-white tracking-tight">Hỏi Meloify AI</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {bottomTab === 'stories' && (
+                    <div className="p-4 space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h2 className="text-2xl font-black text-white">Tin</h2>
+                        <span className="text-xs text-[#0084FF] font-semibold">Tất cả tin (12)</span>
+                      </div>
+                      <p className="text-xs text-zinc-400">Xem nhanh các mẹo phát âm, slang Gen Z và hội thoại mẫu mỗi ngày.</p>
+                      
+                      <div className="grid grid-cols-2 gap-3 pt-1">
+                        {[
+                          { title: "Cách nói 'I agree' chuẩn Tây", views: "14.2k", tag: "Slang", gradient: "from-pink-600 to-rose-500" },
+                          { title: "5 câu order cafe tự tin", views: "28.5k", tag: "Giao tiếp", gradient: "from-amber-600 to-orange-500" },
+                          { title: "Paraphrase ăn điểm IELTS", views: "9.8k", tag: "IELTS", gradient: "from-emerald-600 to-teal-500" },
+                          { title: "Email từ chối sếp khéo léo", views: "19.1k", tag: "Công sở", gradient: "from-blue-600 to-indigo-500" }
+                        ].map((s, idx) => (
+                          <div
+                            key={idx}
+                            onClick={() => showToast(\`Đang xem: \${s.title}\`)}
+                            className={\`bg-gradient-to-br \${s.gradient} text-white rounded-2xl aspect-[9/13] p-3.5 flex flex-col justify-between relative overflow-hidden group cursor-pointer shadow-lg active:scale-98 transition\`}
+                          >
+                            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-black/30 backdrop-blur-md w-fit border border-white/20">
+                              {s.tag}
+                            </span>
+                            <div>
+                              <p className="text-[13px] font-bold leading-snug line-clamp-2 drop-shadow-md">{s.title}</p>
+                              <span className="text-[10px] text-white/80 mt-1 block">▶ {s.views}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {bottomTab === 'notifications' && (
+                    <div className="p-4 space-y-3">
+                      <h2 className="text-2xl font-black text-white mb-2">Thông báo</h2>
+                      <div className="space-y-2">
+                        {[
+                          { title: "Chloe vừa nhắc bạn giữ chuỗi 🔥", time: "10 phút trước", read: false, icon: "💅" },
+                          { title: "Liam: 'Anh đã chuẩn bị sẵn chủ đề tối nay rồi nè!'", time: "1 giờ trước", read: false, icon: "🧸" },
+                          { title: "Chúc mừng! Bạn đã hoàn thành mục tiêu 15 phút hôm nay.", time: "Hôm qua", read: true, icon: "🎉" },
+                          { title: "Examiner Elena đã cập nhật bộ từ vựng IELTS mới.", time: "2 ngày trước", read: true, icon: "🎯" }
+                        ].map((item, idx) => (
+                          <div
+                            key={idx}
+                            onClick={() => showToast(item.title)}
+                            className={\`p-3.5 rounded-2xl flex items-center justify-between gap-3 cursor-pointer transition active:scale-98 \${
+                              item.read ? 'bg-[#242526]/60' : 'bg-[#242526] border border-white/10'
+                            }\`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <span className="text-2xl">{item.icon}</span>
+                              <div>
+                                <p className={\`text-[13.5px] leading-snug \${item.read ? 'text-zinc-300' : 'text-white font-semibold'}\`}>
+                                  {item.title}
+                                </p>
+                                <span className="text-[11px] text-zinc-500">{item.time}</span>
+                              </div>
+                            </div>
+                            {!item.read && (
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#0084FF] flex-shrink-0"></span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {bottomTab === 'menu' && (
+                    <div className="p-4 space-y-4">
+                      <h1 className="text-[28px] font-black text-white tracking-tight leading-none mb-1">
+                        Menu
+                      </h1>
+
+                      <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.08]">
+                        <div
+                          onClick={() => showToast('Hồ sơ học tập của bạn')}
+                          className="p-3.5 flex items-center gap-3.5 cursor-pointer hover:bg-white/[0.04] transition"
+                        >
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-indigo-500 to-pink-500 flex items-center justify-center text-xl font-bold text-white shadow-md">
+                            A
+                          </div>
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-[15.5px] font-bold text-white leading-tight">Anh Huu</h3>
+                            <p className="text-[12px] text-[#8A8D91] mt-0.5 truncate">
+                              Trình độ B1 · @danghuuanh01
+                            </p>
+                          </div>
+                        </div>
+
+                        <div
+                          onClick={() => setIsSettingsOpen(true)}
+                          className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3 text-white text-[14.5px] font-medium">
+                            <Settings className="w-5 h-5 text-white/90" />
+                            <span>Cài đặt</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                        </div>
+                      </div>
+
+                      <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.08]">
+                        <div
+                          onClick={() => showToast('Mở Sổ từ vựng đã lưu')}
+                          className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3 text-white text-[14.5px]">
+                            <BookOpen className="w-5 h-5 text-[#0084FF]" />
+                            <span>Sổ từ vựng đã lưu</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                        </div>
+
+                        <div
+                          onClick={() => showToast('Mở Kho lưu trữ đoạn chat')}
+                          className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3 text-white text-[14.5px]">
+                            <Archive className="w-5 h-5 text-amber-400" />
+                            <span>Kho lưu trữ đoạn chat</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                        </div>
+
+                        <div
+                          onClick={() => showToast('Xem thống kê chuỗi các nhân vật')}
+                          className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                        >
+                          <div className="flex items-center gap-3 text-white text-[14.5px]">
+                            <Flame className="w-5 h-5 text-[#FF5A00]" />
+                            <span>Thống kê chuỗi luyện nói 🔥</span>
+                          </div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-xs font-bold text-[#FF5A00]">6 nhân vật</span>
+                            <ChevronRight className="w-4 h-4 text-[#8A8D91]" />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-[12px] text-[#8A8D91] font-semibold px-2 mb-1.5">
+                          Mục tiêu học tập
+                        </p>
+                        <div className="bg-[#242526] rounded-2xl overflow-hidden divide-y divide-white/[0.08]">
+                          <div
+                            onClick={() => showToast('Mục tiêu hiện tại: 15 phút mỗi ngày')}
+                            className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                          >
+                            <div className="flex items-center gap-3 text-white text-[14.5px]">
+                              <Target className="w-5 h-5 text-emerald-400" />
+                              <span>Mục tiêu hàng ngày</span>
+                            </div>
+                            <span className="text-xs text-zinc-400">15 phút/ngày</span>
+                          </div>
+
+                          <div
+                            onClick={() => showToast('Đang bật nhắc nhở lúc 20:00 hằng ngày')}
+                            className="p-3.5 flex items-center justify-between cursor-pointer hover:bg-white/[0.04] transition active:bg-white/[0.08]"
+                          >
+                            <div className="flex items-center gap-3 text-white text-[14.5px]">
+                              <Clock className="w-5 h-5 text-purple-400" />
+                              <span>Giờ nhắc nhở luyện nói</span>
+                            </div>
+                            <span className="text-xs text-zinc-400">20:00</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {!selectedCharId && (
+            <nav
+              aria-label="Điều hướng chính"
+              className="bg-black border-t border-white/[0.08] px-3 py-1.5 flex items-center justify-around flex-shrink-0 z-40"
+            >
+              {[
+                { id: 'chats', label: 'Đoạn chat', icon: MessageSquare, badge: '23' },
+                { id: 'stories', label: 'Tin', icon: Film },
+                { id: 'notifications', label: 'Thông báo', icon: Bell, badge: '2' },
+                { id: 'menu', label: 'Menu', icon: MenuIcon }
+              ].map(tab => {
+                const IconComp = tab.icon;
+                const isActive = bottomTab === tab.id && !isSettingsOpen;
+
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setBottomTab(tab.id);
+                      setIsSettingsOpen(false);
+                    }}
+                    className={\`flex flex-col items-center justify-center gap-0.5 py-1 px-4 transition-all duration-150 active:scale-95 \${
+                      isActive ? 'text-[#0084FF]' : 'text-[#8A8D91] hover:text-white'
+                    }\`}
+                  >
+                    <div className="relative">
+                      <IconComp className={\`w-6 h-6 \${isActive ? 'stroke-[2.5]' : 'stroke-[1.8]'}\`} />
+                      {tab.badge && !isActive && (
+                        <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-extrabold px-1 min-w-[16px] h-[16px] flex items-center justify-center rounded-full border-2 border-black">
+                          {tab.badge}
+                        </span>
+                      )}
+                    </div>
+                    <span className={\`text-[11px] font-medium tracking-tight \${isActive ? 'text-[#0084FF] font-bold' : 'text-[#8A8D91]'}\`}>
+                      {tab.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+          )}
+
+        </div>
+      </div>
+    </div>
+  );
+}
+`;
+
+    const downloadBtn = document.getElementById('downloadBtn');
+    const toast = document.getElementById('toast');
+    const btnLabel = document.getElementById('btnLabel');
+
+    downloadBtn.addEventListener('click', async () => {
+      try {
+        downloadBtn.disabled = true;
+        btnLabel.textContent = 'Đang đóng gói file ZIP...';
+        toast.classList.remove('hidden');
+
+        const zip = new JSZip();
+        
+        // Root directory
+        const rootFolder = zip.folder("meloify-messenger-ai");
+
+        // Config and root files
+        rootFolder.file("package.json", packageJsonContent);
+        rootFolder.file("vite.config.js", viteConfigContent);
+        rootFolder.file("tailwind.config.js", tailwindConfigContent);
+        rootFolder.file("postcss.config.js", postcssConfigContent);
+        rootFolder.file("index.html", indexHtmlContent);
+        rootFolder.file("README.md", readmeContent);
+
+        // Source directory
+        const srcFolder = rootFolder.folder("src");
+        srcFolder.file("App.jsx", appJsxContent);
+        srcFolder.file("main.jsx", mainJsxContent);
+        srcFolder.file("index.css", indexCssContent);
+
+        // Generate and trigger download
+        const blob = await zip.generateAsync({ type: "blob" });
+        saveAs(blob, "meloify-messenger-ai.zip");
+
+        btnLabel.textContent = '✅ Đã tải xong! Nhấn để tải lại';
+        toast.textContent = 'Đã tải thành công file meloify-messenger-ai.zip!';
+        downloadBtn.disabled = false;
+      } catch (err) {
+        console.error(err);
+        btnLabel.textContent = 'Lỗi tải file. Thử lại';
+        toast.textContent = 'Có lỗi xảy ra khi tạo file zip. Vui lòng thử lại.';
+        downloadBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
